@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import Store from "./utils/store";
+import Main from "./components/Main";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Store.Container>
+      <div className="app">
+        <div className="top">
+          <h1>HydraView</h1>
+          <p>
+            A web-based viewer for Hydra Linked Data APIs. Based on{" "}
+            <a href="https://www.markus-lanthaler.com/hydra/console/?url=http://www.markus-lanthaler.com/hydra/event-api/">
+              Hydra Console
+            </a>
+            . Written in TypeScript and React, using{" "}
+            <a href="https://github.com/HydraCG/Heracles.ts">Heracles.ts</a>.
+          </p>
+        </div>
+        <Main></Main>
+        <div className="bottom">
+          <p> &copy; 2020 Alex Kreidler.</p>
+        </div>
+      </div>
+    </Store.Container>
   );
 }
 

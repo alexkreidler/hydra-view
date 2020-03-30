@@ -1,8 +1,9 @@
 {
-  "name": "hydraview",
+  "name": "hydra-view",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hydra-cg/heracles.ts": "https://github.com/alexkreidler/Heracles.ts",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -13,7 +14,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "undux": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
