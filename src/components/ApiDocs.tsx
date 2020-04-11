@@ -22,7 +22,7 @@ export default function ApiDocs({ docs }: { docs?: IApiDocumentation }) {
       <p>{docs.supportedClasses.length} Classes</p>
       <p>Entrypoint: {docs.entryPoint}</p>
       {docs.supportedClasses.toArray().map((c, i) => {
-        return <Class c={c}></Class>;
+        return <Class key={c.iri} c={c}></Class>;
       })}
     </div>
   );

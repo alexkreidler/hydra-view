@@ -3,13 +3,13 @@ import store from "../utils/store";
 import { TextInput } from "./TextInput";
 import { getDocs } from "../services/get";
 import ApiDocs from "./ApiDocs";
-import { IApiDocumentation } from "@hydra-cg/heracles.ts";
+// import { IApiDocumentation } from "@hydra-cg/heracles.ts";
 
 function Example({ value, s }: { value: string; s: any }) {
   return (
     <a
       className="example"
-      href=""
+      href={value}
       onClick={e => {
         e.preventDefault();
         console.log(e.target);
@@ -26,21 +26,26 @@ function Example({ value, s }: { value: string; s: any }) {
 const examples = [
   "https://www.markus-lanthaler.com/hydra/event-api/",
   "https://www.markus-lanthaler.com/hydra/api-demo/",
-  "https://sources.test.wikibus.org/"
+  "https://sources.test.wikibus.org/",
+  "http://localhost:9090/home/"
 ];
 
 export default function Main() {
   let s = store.useStore();
 
+  let curURL = s.get("url");
+  // moved these out here to get rid of ESLint react-hooks/exhaustive-deps rule.
+  let dset = s.set("docs");
+  let rset = s.set("response")
   useEffect(() => {
     (async function() {
-      const resp = await getDocs(s.get("url"));
-      s.set("docs")(resp.doc);
-      s.set("response")(resp.response);
+      const resp = await getDocs(curURL);
+      dset(resp.doc);
+      rset(resp.response);
     })();
-  }, [s.get("url")]);
+  }, [curURL, dset, rset]);
   return (
-    <div className="main"> 
+    <div className="main">
       <div className="flex url">
         <TextInput onChange={s.set("url")} value={s.get("url")}></TextInput>
         {/* <button onClick={() => {}}>Go</button> */}
