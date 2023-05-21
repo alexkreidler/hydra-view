@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import store from "../utils/store";
+
+import ApiDocs from "./ApiDocs";
 import { TextInput } from "./TextInput";
 import { getDocs } from "../services/get";
-import ApiDocs from "./ApiDocs";
+import store from "../utils/store";
+
 // import { IApiDocumentation } from "@hydra-cg/heracles.ts";
 
 function Example({ value, s }: { value: string; s: any }) {
@@ -24,10 +26,14 @@ function Example({ value, s }: { value: string; s: any }) {
 }
 
 const examples = [
-  "https://www.markus-lanthaler.com/hydra/event-api/",
-  "https://www.markus-lanthaler.com/hydra/api-demo/",
-  "https://sources.test.wikibus.org/",
+  "https://bff.wikibus.org/",
+  // Needs CORS
+  // "https://demo.api-platform.com/books",
   "http://localhost:9090/home/"
+  // All the broken ones
+  // "https://www.markus-lanthaler.com/hydra/event-api/",
+  // "https://www.markus-lanthaler.com/hydra/api-demo/",
+  // "https://sources.test.wikibus.org/",
 ];
 
 export default function Main() {
